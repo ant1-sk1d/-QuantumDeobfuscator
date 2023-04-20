@@ -4,18 +4,12 @@ import argparse
 
 
 def deobf(filename):
-    with open(filename, 'r') as f:
-        f = f.read()
-        
-        #
-        print("DAMN! I've hit a snag. If only there was a way to print the code instead of executing it?")
-        #
-        
-        # I think after making it print instead of exec, I should run the code and it should print out the deobfuscated code.
-        exec(f)
+    code = eval(open(filename, 'r').read())  # Read the file and evaluate it
+    print(code)  # Print the code
+
 
 def main():
-    parser = argparse.ArgumentParser(prog='Quantom Deobfuscator',
+    parser = argparse.ArgumentParser(prog='Quantum Deobfuscator',
                                      description='Deobfuscates the code to reveal the original source')
     parser.add_argument('filename', help='Name of the file to obfuscate')
     args = parser.parse_args()
